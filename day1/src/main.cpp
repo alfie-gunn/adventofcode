@@ -3,6 +3,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <exception>
+#include <numeric>
+
+int abs(int a)
+{
+    if (a < 0)
+    {
+        return a * -1;
+    }
+    else
+    {
+        return a;
+    }
+}
 
 int main(int argc, char **argv)
 {
@@ -26,4 +39,13 @@ int main(int argc, char **argv)
 
     std::sort(first.begin(), first.end());
     std::sort(second.begin(), second.end());
+
+    std::vector<int32_t> diff_vector;
+    diff_vector.reserve(first.capacity());
+    for (int i = 0; i < first.size(); i++)
+    {
+        diff_vector.push_back(abs(first[i] - second[i]));
+    }
+
+    std::cout << std::accumulate(diff_vector.begin(), diff_vector.end(), 0) << std::endl;
 }
