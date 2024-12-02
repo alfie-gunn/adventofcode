@@ -1,2 +1,2 @@
 build:
-	g++ src/main.cpp -Wall -Werror -o main
+	g++ -std=c++23 src/main.cpp -Wall -Werror -o main
